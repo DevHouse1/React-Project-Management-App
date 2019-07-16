@@ -4,7 +4,7 @@ const ProjectDetails = (props) => {
     const {id} = props.match.params;
     return (
         <div className="container section project-details"> 
-        <div className ="card z-depth-1">
+        <div className ="card transparent z-depth-1">
             <div className ="card-content">
                 <span className ="card-title"> Project Title - {id}</span>
                 <p>this projet was originaly started by 3 students with pation to web technonlogies,
@@ -12,7 +12,7 @@ const ProjectDetails = (props) => {
                     OCR algorithme to convert the image to a consumable text ...
                 </p>
             </div>
-            <div className ="card-action grey lighten-4 grey-text" >
+            <div className ="card-action  transparent grey-text" >
                 <p> Posted by a student</p>
                 <p> 3rd august, 2 am :)</p>
             </div>
