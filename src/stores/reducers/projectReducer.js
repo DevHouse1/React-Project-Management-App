@@ -7,6 +7,10 @@ const initstate = {
 };
 
 const projectReducer = (state = initstate, action) => {
+    if(action.type === 'CREATE_PROJECT')
+    {
+        state.projects = [...state.projects , action.project];
+    }
     return state;
 }
 
