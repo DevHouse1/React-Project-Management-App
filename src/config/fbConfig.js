@@ -13,7 +13,6 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  // HH : i dont know what this line does exactly
-  firebase.firestore().settings({timestampsInSnapshots: true});
+
 
   export default firebase;
