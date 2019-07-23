@@ -22,6 +22,9 @@ class CreateProject extends Component {
         this.props.history.push('/');
     }
     render() {
+        const { auth } = this.props;
+        if (!auth.uid)
+            this.props.history.push('/signin');
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className='none'>
@@ -43,11 +46,15 @@ class CreateProject extends Component {
         );
     }
 }
-
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
 const mapDispatchToprops = (dispatch) => {
     return {
         createProject: (project) => dispatch(createProject(project))
     }
 }
 // null here hold the place of mapStateToProps
-export default connect(null, mapDispatchToprops)(CreateProject);
+export default connect(mapStateToProps, mapDispatchToprops)(CreateProject);
