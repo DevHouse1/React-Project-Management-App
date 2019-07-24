@@ -11,11 +11,21 @@ const authReducer = (state = initstate, action) => {
         return { ...state, authError: 'login failed Ooops!' }
     }
 
-    if(action.type === 'SIGNOUT_SUCCESS')
-    {
+    if (action.type === 'SIGNOUT_SUCCESS') {
         console.log('signOut successed');
         return state;
     }
+
+    if (action.type === 'SIGNUP_SUCCESS') {
+        console.log('signUp successed');
+        return {...state , authError : null};
+    }
+
+    if (action.type === 'SIGNUP_ERROR') {
+        console.log('signUp successed');
+        return {...state , authError : action.err.message};
+    }
+    
     return state;
 }
 
