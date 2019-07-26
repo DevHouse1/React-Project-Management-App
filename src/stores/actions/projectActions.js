@@ -5,18 +5,21 @@
 
 export const createProject = (project) => {
     return (dispatch, getState, { getFirestore, getFirebase }) => {
-        // add ajax call to the firbase server using the last two parameters
+
         const firestore = getFirestore();
+        const uid = getState().firebase.auth.uid;
+        const profile = getState().firebase.profile
         firestore.collection('projects').add({
             ...project,
-            authorFirstName: 'jhon',
-            authorLastName: 'Kamster',
-            createdAt : new Date()
+            authorFirstName: profile.firstName,
+            authorLastName: profile.lastName,
+            authorId: uid,
+            createdAt: new Date()
         }).then(() => {
             dispatch({ type: 'CREATE_PROJECT', project });
         }).catch((err) => {
-            dispatch({type: 'CREATE_PROJECT_ERROR', err});
+            dispatch({ type: 'CREATE_PROJECT_ERROR', err });
         });
-       
+
     }
 }
